@@ -8,14 +8,14 @@ const LibrarySchema = new Schema({
         required: [true, "Book name must be filled!"],
     },
     price: {
-        type: Int32,
+        type: Number,
     },
     author: {
         type: String,
         required: [true, "Book author must be filled!"]
     },
     isbn: {
-        type: Int32,
+        type: Number,
         length: 10
     },
     publishdate: {

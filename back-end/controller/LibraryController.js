@@ -2,7 +2,7 @@ const express = require('express');
 const Library = require('../models/Library');
 
 const get_books = (req, res, next) => {
-    Book.find({}, function (err, data) {
+    Library.find({}, function (err, data) {
         if (err)
             res.json({
                 success: false,
@@ -18,7 +18,7 @@ const get_books = (req, res, next) => {
 
 const add_book = (req, res, next) => {
     const data = req.body;
-    Book.create(data, function (err, data) {
+    Library.create(data, function (err, data) {
         if (err) res.json({
             success: false,
             data: err
@@ -32,14 +32,14 @@ const add_book = (req, res, next) => {
 }
 
 const delete_books = (req, res, next) => {
-    Book.findOneAndDelete({ isbn: req.params.isbn })
+    Library.findOneAndDelete({ isbn: req.params.isbn })
         .then((data) => res.json(data))
         .catch(err => res.json({ success: false, data: err }))
 }
 
 const update_book = (req, res, next) => {
     const data = req.body;
-    Book.updateOne({ isbn: req.params.isbn }, data, function (err, data) {
+    Library.updateOne({ isbn: req.params.isbn }, data, function (err, data) {
         if (err) res.json({
             success: false,
             data: err,

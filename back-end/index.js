@@ -2,7 +2,8 @@ const dotenv = require('dotenv').config();
 const express = require("express");
 const app = express();
 const apiRoutes = require('./routes/api');
-const connection = require('./database')
+const connection = require('./database');
+const cors = require('cors');
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -13,6 +14,19 @@ app.all('*', (req, res, next) => {
         success: false,
         message: `Can't find ${req.originalUrl} on this server`
     })
+});
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions));
+
+app.all('*', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://localhost:3000");
+    next();
 });
 
 const port = 3002;
