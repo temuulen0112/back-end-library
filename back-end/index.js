@@ -7,7 +7,8 @@ const cors = require('cors');
 
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/', apiRoutes)
+app.use('/', apiRoutes);
+app.use(cors());
 
 app.all('*', (req, res, next) => {
     res.status(404).json({
@@ -16,18 +17,16 @@ app.all('*', (req, res, next) => {
     })
 });
 
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200,
-}
+// const corsOptions = {
+//     origin: '*',
+//     credentials: true,
+//     optionSuccessStatus: 200,
+// }
 
-app.use(cors(corsOptions));
-
-app.all('*', (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://localhost:3000");
-    next();
-});
+// app.all('*', (req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//     next();
+// });
 
 const port = 3002;
 app.listen(port, () => {
