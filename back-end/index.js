@@ -17,16 +17,16 @@ app.all('*', (req, res, next) => {
     })
 });
 
-// const corsOptions = {
-//     origin: '*',
-//     credentials: true,
-//     optionSuccessStatus: 200,
-// }
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
 
-// app.all('*', (req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//     next();
-// });
+app.all('*', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    next();
+});
 
 const port = 3002;
 app.listen(port, () => {
