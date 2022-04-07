@@ -8,7 +8,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/', apiRoutes);
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.all('*', (req, res, next) => {
     res.status(404).json({
@@ -16,12 +16,6 @@ app.all('*', (req, res, next) => {
         message: `Can't find ${req.originalUrl} on this server`
     })
 });
-
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200,
-}
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
