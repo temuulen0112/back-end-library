@@ -35,14 +35,14 @@ const add_book = (req, res, next) => {
 }
 
 const delete_books = (req, res, next) => {
-    Library.findOneAndDelete({ isbn: req.params.isbn })
+    Library.findOneAndDelete({ isbn: req.params._id })
         .then((data) => res.json(data))
         .catch(err => res.json({ success: false, data: err }))
 }
 
 const update_book = (req, res, next) => {
     const data = req.body;
-    Library.updateOne({ isbn: req.params.isbn }, data, function (err, data) {
+    Library.updateOne({ _id: req.params._id }, data, function (err, data) {
         if (err) {
             res.json({
                 success: false,
