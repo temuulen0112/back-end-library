@@ -11,7 +11,7 @@ app.use('/', apiRoutes);
 app.use(cors());
 app.use((req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST")
+    res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST, HEAD, OPTIONS")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 });
 
