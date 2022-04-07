@@ -9,7 +9,9 @@ const cors = require('cors');
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/', apiRoutes);
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.all('*', (req, res, next) => {
