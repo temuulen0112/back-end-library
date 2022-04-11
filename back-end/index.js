@@ -21,15 +21,6 @@ app.all('*', (req, res, next) => {
     })
 });
 
-var corsOption = {
-    origin: "*",
-    optionSuccessStatus: 200
-}
-
-app.get("/", cors(corsOption), (req, res) => {
-    res.send(jsonFile)
-})
-
 app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials: true");
